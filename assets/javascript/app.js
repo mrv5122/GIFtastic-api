@@ -28,14 +28,13 @@ $(document).ready(function () {
         var carBrand = $(this).html();
     
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + carBrand + "&api_key=yFBJSQI0Jr7bLJof1pMKSlDvt9updifU&limit=10";
-        console.log(queryURL);
-
 
         //ajax call for the car being clicked
         $.ajax({
             url: queryURL,
-            method: "GET"
-            }).then(function(response) {
+            method: "GET"})
+        
+        .then(function(response) {
 
             var results = response.data;
             console.log(queryURL);
@@ -48,16 +47,10 @@ $(document).ready(function () {
                 //create car div to display results with ratings
                 var carDiv = $("<div>");
                
-                var carView = results[i].images.fixed_height.url;
-                var carStill = results[i].images.fixed_still.url;
-                
-                
-               
-                //create image tag to hold result image
-                var carGif = $("<img>").attr("src", carStill).attr("data-animate", carView).attr("data-still", carStill);
-                carGif.attr("data-state", "still");
-                //set src attr of car image to property value from result item
-    
+                var carImage = $("<img>");
+
+
+                carImage.attr("src", results[i].images.fixed_height.url);
 
                 //paragraph tag with result's rating
                 var rating = results[i].rating;
@@ -66,7 +59,7 @@ $(document).ready(function () {
 
                 //append paragraph and img tag to carDiv
                 carDiv.append(ratingPar);
-                carDiv.append(carGif);
+                carDiv.append(carImage);
 
                 //prepend animalDiv to html in #gifs-display div
                 $("#gifs-display").prepend(carDiv);
