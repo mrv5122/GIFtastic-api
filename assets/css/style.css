@@ -1,0 +1,50 @@
+.jumbotron {
+    color: greenyellow;
+    background-color: black;
+    text-align: center;
+    size: 75%;
+}
+p {
+    color: greenyellow;
+    margin-top: 4px;
+    margin-bottom: 1px;
+}
+button {
+    color: greenyellow;
+    background-color: black;
+    float: left;
+    padding: 3px 10px 3px 10px;
+    margin: 3px 3px 3px 3px;
+}
+
+h3 {
+    margin: 5px 3px 2px 2px;
+    color: greenyellow;
+}
+
+.form-group {
+    margin-bottom: 2px;
+}
+
+#buttons-display {
+    height: fit-content;
+    width: fit-content;
+}
+
+#car-form {
+    float: right;
+}
+
+
+#gifs-display {
+    float: left;
+    width: 100%;
+}
+
+.gif {
+margin-bottom: 10px;
+}
+
+body {
+    background: grey;
+}
