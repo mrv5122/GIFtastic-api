@@ -50,7 +50,11 @@ $(document).ready(function () {
                 var carImage = $("<img>");
 
 
-                carImage.attr("src", results[i].images.fixed_height.url);
+                carImage.attr("src", results[i].images.fixed_height.url).addClass("gif");
+
+                carImage.attr("data-still", results[i].images.fixed_height_still.url);
+
+                carImage.attr("data-animate", results[i].images.fixed_height.url)
 
                 //paragraph tag with result's rating
                 var rating = results[i].rating;
@@ -64,8 +68,23 @@ $(document).ready(function () {
                 //prepend animalDiv to html in #gifs-display div
                 $("#gifs-display").prepend(carDiv);
                 
+                
             }
+            $(".gif").on("click", function () {
+
+                var state = $(this).attr("data-state");
+            
+                if (state === "still") {
+                    $(this).attr("src", $(this).attr("data-animate"));
+                    $(this).attr("data-state", "animate");
+                } else {
+                    $(this).attr("src", $(this).attr("data-still"));
+                    $(this).attr("data-state", "still");
+                }
+                });
+            
         });
+       
     });
     $(document).on("click", "#add-car", function(){
         var cars = $("#car-input").val().trim();
@@ -75,17 +94,4 @@ $(document).ready(function () {
         return false;
         });
     });
-    //     // start/pause gif function
-    //     $(".gif").on("click", function () {
-
-    //         var state = $(this).attr("data-state");
-
-    //         if (state === "still") {
-    //             $(this).attr("src", $(this).attr("data-animate"));
-    //             $(this).attr("data-state", "animate");
-    //         } else {
-    //             $(this).attr("src", $(this).attr("data-still"));
-    //             $(this).attr("data-state", "still");
-    //         }
-    //     }; //end pause/play function
-    // });
+  
